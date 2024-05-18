@@ -13,6 +13,7 @@ This project is written in Python and using the following framework:
 `pipenv shell`
 ### Initalize the database
 The default initalization code will use the sqlite engine and the DB file will be located in the root directory of the project. 
+
 `python initdb.py`
 ### Run the Flask server in development mode
 In this development mode, it will run on port 8080

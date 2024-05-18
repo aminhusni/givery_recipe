@@ -3,9 +3,10 @@
 # Desc: This is where the database type, model (schema) and connection will be defined.
 
 import os
+
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
-from flask import Flask
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

@@ -3,16 +3,11 @@
 # Desc: This is the main Flask program.
 
 from flask import Flask
-from flask import jsonify
-from flask import redirect
 from flask import request
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, got_request_exception
 
-from sqlalchemy.sql import func
 from sqlalchemy.orm.exc import NoResultFound
 
-import os
 import json
 
 from model import create_DB_instance

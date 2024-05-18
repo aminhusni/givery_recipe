@@ -7,8 +7,6 @@ name = "pypi"
 flask = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
-flask-restful = "*"
-multidict = "*"
 
 [dev-packages]
 
