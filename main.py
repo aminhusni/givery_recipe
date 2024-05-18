@@ -5,10 +5,7 @@
 from flask import Flask
 from flask import request
 from flask import Flask, got_request_exception
-
 from sqlalchemy.orm.exc import NoResultFound
-
-import json
 
 from model import create_DB_instance
 

@@ -17,4 +17,5 @@ The default initalization code will use the sqlite engine and the DB file will b
 `python initdb.py`
 ### Run the Flask server in development mode
 In this development mode, it will run on port 8080
+
 `python main.py`
