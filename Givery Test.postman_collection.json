@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "32bbf8cb-a66d-4bdc-850e-e83007f463ab",
+		"name": "Givery Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2492186"
+	},
+	"item": [
+		{
+			"name": "Get Recipe List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BASEURL}}/recipes",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Recipe (OK)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Chicken Noodles!!!!!\",\r\n    \"serves\": \"4 people\",\r\n    \"making_time\": \"15 min\",\r\n    \"ingredients\": \"chicken, stock, seasoning, noodles, water\",\r\n    \"cost\": 1050\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASEURL}}/recipes",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Recipe (NG)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Chicken Noodles\",\r\n    \"serves\": \"4 people\",\r\n    \"ingredients\": \"chicken, stock, seasoning, noodles, water\",\r\n    \"cost\": 1050\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASEURL}}/recipes",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recipe (ID)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/recipes/1",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes",
+						"1"
+					],
+					"query": [
+						{
+							"key": "created_at",
+							"value": "True",
+							"disabled": true
+						},
+						{
+							"key": "updated_at",
+							"value": "True",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Recipe (Partial Param)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Chicken Dinner!\",\r\n    \"serves\": \"44 people\",\r\n    \"making_time\": \"200 min\",\r\n    \"cost\": 10500\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASEURL}}/recipes/3",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Recipe (Full Param)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Chicken Noodles\",\r\n    \"serves\": \"4 people\",\r\n    \"making_time\": \"15 min\",\r\n    \"ingredients\": \"chicken, stock, seasoning, noodles, water\",\r\n    \"cost\": 1050\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASEURL}}/recipes/3",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Recipe (ID)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/recipes/3",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong Method",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BASEURL}}/recipes",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recipe 404",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/recipes/3",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"recipes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASEURL",
+			"value": "http://track.nasilemaktech.com:8080"
+		},
+		{
+			"key": "BASEURL",
+			"value": "http://172.31.19.55:8080",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
