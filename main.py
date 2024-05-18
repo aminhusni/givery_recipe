@@ -6,6 +6,7 @@ from flask import Flask
 from flask import request
 from flask import Flask, got_request_exception
 from sqlalchemy.orm.exc import NoResultFound
+from datetime import datetime
 
 from model import create_DB_instance
 
@@ -67,8 +68,8 @@ def create_recipes():
         # Get reply from database (id, creation time, updated time)
         db.session.refresh(new_recipe)
         id = new_recipe.id
-        created_at = new_recipe.created_at
-        updated_at = new_recipe.updated_at
+        created_at = new_recipe.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        updated_at = new_recipe.updated_at.strftime("%Y-%m-%d %H:%M:%S")
 
         serialized_response = [{
             "id": new_recipe.id,
@@ -77,15 +78,15 @@ def create_recipes():
             "serves": new_recipe.serves,
             "ingredients": new_recipe.ingredients,
             "cost": new_recipe.cost,
-            "created_at": new_recipe.created_at,
-            "updated_at": new_recipe.updated_at
+            "created_at": created_at,
+            "updated_at": updated_at
         }]
 
         return {"message": "Recipe successfully created!", "recipe": serialized_response}
 
 
 # GET /recipes/{id}, to get a recipe. PATCH to update. DELETE to delete.
-@app.route('/recipes/<rec_id>', methods=['GET', 'PATCH', 'DELETE'])
+@app.route('/recipes/<int:rec_id>', methods=['GET', 'PATCH', 'DELETE'])
 def indiv_recipes(rec_id):
 
     # Isolate global parameter (relation to method)
@@ -110,9 +111,11 @@ def indiv_recipes(rec_id):
 
         # Optional parameters
         if request.args.get('created_at'):
-            serialized_recipes[0]["created_at"] = recipe_instance.created_at
+            serialized_recipes[0]["created_at"] = recipe_instance.created_at.strftime(
+                "%Y-%m-%d %H:%M:%S")
         if request.args.get('updated_at'):
-            serialized_recipes[0]["updated_at"] = recipe_instance.updated_at
+            serialized_recipes[0]["updated_at"] = recipe_instance.updated_at.strftime(
+                "%Y-%m-%d %H:%M:%S")
 
         return {"message": "Recipe details by id", "recipe": serialized_recipes}
 
@@ -151,16 +154,16 @@ def indiv_recipes(rec_id):
 
 @app.route('/')
 def hello_world():
-    return "Invalid API path", 404
+    return {"message": "Invalid API path"}, 404
 
 
 @app.errorhandler(Exception)
 def page_not_found(e):
     try:
         if e.code == 405:
-            return {"message": "Method not allowed or supported for this API path"}, 405
+            return {"message": "Method not allowed or supported for this API path"}, 404
         if e.code == 404:
-            return "Invalid API path", 404
+            return {"message": "Invalid API path"}, 404
     except:
         return {"message": "Critical Backend Error"}, 500
 
