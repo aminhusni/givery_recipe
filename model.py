@@ -1,6 +1,6 @@
 # Author: Amin Husni
 # Date Written: 18 May 2024
-# Desc: This is where the database type, model (schema) and connection will be defined. 
+# Desc: This is where the database type, model (schema) and connection will be defined.
 
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -8,6 +8,7 @@ from sqlalchemy.sql import func
 from flask import Flask
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 def create_DB_instance():
     app = Flask(__name__)
@@ -28,11 +29,12 @@ def create_DB_instance():
         serves = db.Column(db.String(100), nullable=False)
         ingredients = db.Column(db.String(300), nullable=False)
         cost = db.Column(db.Integer, nullable=False)
-        created_at = db.Column(db.DateTime, nullable=False, server_default=func.now())
-        updated_at = db.Column(db.DateTime, nullable=False, server_default=func.now(), onupdate=func.now())
+        created_at = db.Column(db.DateTime, nullable=False,
+                               server_default=func.now())
+        updated_at = db.Column(db.DateTime, nullable=False,
+                               server_default=func.now(), onupdate=func.now())
 
         def __repr__(self):
             return f'<Recipe {self.title}>'
-
 
     return app, db, Recipe
