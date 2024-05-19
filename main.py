@@ -7,11 +7,20 @@ from flask import request
 from flask import Flask, got_request_exception
 from sqlalchemy.orm.exc import NoResultFound
 from datetime import datetime
+from flask_migrate import Migrate
+import os
 
-from model import create_DB_instance
+from model import db, Recipe
 
 # Establish DB connection and DB model from model.py
-app, db, Recipe = create_DB_instance()
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] =\
+    'sqlite:///' + os.path.join(basedir, 'recipe.db')
+db.init_app(app)
+migrate = Migrate(app, db)
+
 
 # API STARTS HERE
 # POST /recipes, to create a recipe. #GET /recipes, to get a recipes list.
@@ -98,7 +107,7 @@ def indiv_recipes(rec_id):
     except NoResultFound:
         return {"message": "No recipe found"}, 404
 
-    # GET with optional parameters
+    # GET with optional parameters ?updated_at=True&created_at=True
     if request.method == 'GET':
         serialized_recipes = [{
             "id": recipe_instance.id,
