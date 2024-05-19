@@ -2,12 +2,10 @@
 # Date Written: 18 May 2024
 # Desc: This is the main Flask program.
 
-from flask import Flask
-from flask import request
-from flask import Flask, got_request_exception
+from flask import Flask, got_request_exception, request
 from sqlalchemy.orm.exc import NoResultFound
-from datetime import datetime
 from flask_migrate import Migrate
+from datetime import datetime
 import os
 
 from model import db, Recipe
