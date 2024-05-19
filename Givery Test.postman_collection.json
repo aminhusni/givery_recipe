@@ -96,13 +96,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASEURL}}/recipes/1",
+					"raw": "{{BASEURL}}/recipes/3?updated_at=True",
 					"host": [
 						"{{BASEURL}}"
 					],
 					"path": [
 						"recipes",
-						"1"
+						"3"
 					],
 					"query": [
 						{
@@ -112,8 +112,7 @@
 						},
 						{
 							"key": "updated_at",
-							"value": "True",
-							"disabled": true
+							"value": "True"
 						}
 					]
 				}
@@ -159,12 +158,13 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Chicken Noodles\",\r\n    \"serves\": \"4 people\",\r\n    \"making_time\": \"15 min\",\r\n    \"ingredients\": \"chicken, stock, seasoning, noodles, water\",\r\n    \"cost\": 1050\r\n}\r\n",
+					"raw": "{\r\n    \"title\": \"Chicken Noodleeees\",\r\n    \"serves\": \"4 people\",\r\n    \"making_time\": \"15 min\",\r\n    \"ingredients\": \"chicken, stock, seasoning, noodles, water\",\r\n    \"cost\": 1050\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -172,13 +172,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASEURL}}/recipes/3",
+					"raw": "{{BASEURL}}/recipes/7",
 					"host": [
 						"{{BASEURL}}"
 					],
 					"path": [
 						"recipes",
-						"3"
+						"7"
 					]
 				}
 			},
@@ -268,13 +268,13 @@
 	"variable": [
 		{
 			"key": "BASEURL",
-			"value": "http://track.nasilemaktech.com:8080"
+			"value": "http://track.nasilemaktech.com:8080",
+			"disabled": true
 		},
 		{
 			"key": "BASEURL",
 			"value": "http://172.31.19.55:8080",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		}
 	]
 }
