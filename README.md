@@ -11,10 +11,10 @@ A sample of API test cases is given in the Postman Collection JSON file.<br>
 Instructions on how to run the code will be at the end of this Readme. 
 
 ## Author's Comment
-Even though this is a test project, I am using all of the frameworks and ORM engine that I would normally use in a project. This practice is done so that such projects can be scaled or expanded in the future as needed. <br><br>
+Even though this is a test project, I am using all of the frameworks and ORM engine that I would normally use in a project. This practice is done so that such projects can be scaled or expanded in the future as needed. <br>
 uWSGI and Nginx are not used for the sake of simplicity and also, that is what I usually do for projects that are
-still under development and are not fully deployed. <br><br>
-HTTPS/TLS will also be ignored in this test as it is not a specified requirement. <br><br>
+still under development and are not fully deployed. <br>
+HTTPS/TLS will also be ignored in this test as it is not a specified requirement. <br>
 Postman API platform software is used, is what I normally use to keep track of my development, testing and later to be converted into the API documentation. 
 
 ## Hidden Cases or Unspecified Specifications
