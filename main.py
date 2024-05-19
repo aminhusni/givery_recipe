@@ -48,7 +48,7 @@ def create_recipes():
 
         received_data = request.get_json()
 
-        # Potential return here
+        # Potential early return here
         # First, we check for any missing parameters
         expected_parameters = ['title', 'making_time',
                                'serves', 'ingredients', 'cost']
@@ -58,7 +58,6 @@ def create_recipes():
         # Tell the requester which paramter is missing that is required.
         if missing_parameters:
             return {"message": "Recipe creation failed!", "required": ', '.join(missing_parameters)}
-        # Missing parameter check end.
 
         # Make the variable human readable
         title = received_data['title']
@@ -176,5 +175,6 @@ def page_not_found(e):
         return {"message": "Critical Backend Error"}, 500
 
 
+# Just in case if main.py is ran directly.
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)

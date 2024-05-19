@@ -1,6 +1,6 @@
 # Author: Amin Husni
 # Date Written: 18 May 2024
-# Desc: This is where the database type, model (schema) and connection will be defined.
+# Desc: This is where the database ORM model will be defined. Seed data is defined here too.
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
