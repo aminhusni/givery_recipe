@@ -23,9 +23,8 @@ migrate = Migrate(app, db)
 
 
 # API STARTS HERE
+
 # POST /recipes, to create a recipe. #GET /recipes, to get a recipes list.
-
-
 @app.route('/recipes', methods=['GET', 'POST'])
 def create_recipes():
 
